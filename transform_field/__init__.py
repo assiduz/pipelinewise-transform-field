@@ -45,6 +45,7 @@ class TransformationTypes(Enum):
     HASH = 'HASH'
     HASH_SKIP_FIRST = 'HASH-SKIP-FIRST'
     MASK_STRING_SKIP_ENDS = 'MASK-STRING-SKIP-ENDS'
+    HEX_TO_STRING = "HEX_TO_STRING"
 
 
 def float_to_decimal(value):
@@ -191,7 +192,7 @@ class TransformField:
             # incompatibilities between the transformation and column types
             self.__validate_stream_trans(message.stream, message.schema)
 
-            # Write the transformed message
+            # Write the transformed message``
             singer.write_message(message)
 
         elif isinstance(message, (singer.RecordMessage, singer.ActivateVersionMessage)):
@@ -298,7 +299,7 @@ class TransformField:
             elif trans_type == TransformationTypes.SET_NULL.value:
                 LOGGER.info('Transformation type is %s, no need to do any validation.', trans_type)
             
-            elif trans_type == "HEX_TO_STRING":
+            elif trans_type == TransformationTypes.HEX_TO_STRING.value:
                 LOGGER.info('Transformation type is %s, no need to do any validation.', trans_type)
             else:
                 raise UnsupportedTransformationTypeException(trans_type)
