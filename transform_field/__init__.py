@@ -297,7 +297,9 @@ class TransformField:
 
             elif trans_type == TransformationTypes.SET_NULL.value:
                 LOGGER.info('Transformation type is %s, no need to do any validation.', trans_type)
-
+            
+            elif trans_type == "HEX_TO_STRING":
+                LOGGER.info('Transformation type is %s, no need to do any validation.', trans_type)
             else:
                 raise UnsupportedTransformationTypeException(trans_type)
 
