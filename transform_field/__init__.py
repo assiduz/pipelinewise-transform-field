@@ -192,7 +192,7 @@ class TransformField:
             # incompatibilities between the transformation and column types
             self.__validate_stream_trans(message.stream, message.schema)
 
-            # Write the transformed message``
+            # Write the transformed message
             singer.write_message(message)
 
         elif isinstance(message, (singer.RecordMessage, singer.ActivateVersionMessage)):
