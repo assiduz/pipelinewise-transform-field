@@ -186,6 +186,9 @@ def _transform_value(value: Any, trans_type: str) -> Any:
         value_len = len(value)
         return_value = '*' * value_len if value_len <= (2 * skip_ends_n) \
             else f'{value[:skip_ends_n]}{"*" * (value_len - (2 * skip_ends_n))}{value[-skip_ends_n:]}'
+    
+    elif trans_type == 'HEX_TO_STRING':
+        return_value = bytes.fromhex(value)
 
     # Return the original value if cannot find transformation type
     # todo: is this the right behavior?

@@ -45,6 +45,7 @@ class TransformationTypes(Enum):
     HASH = 'HASH'
     HASH_SKIP_FIRST = 'HASH-SKIP-FIRST'
     MASK_STRING_SKIP_ENDS = 'MASK-STRING-SKIP-ENDS'
+    HEX_TO_STRING = "HEX_TO_STRING"
 
 
 def float_to_decimal(value):
@@ -297,7 +298,9 @@ class TransformField:
 
             elif trans_type == TransformationTypes.SET_NULL.value:
                 LOGGER.info('Transformation type is %s, no need to do any validation.', trans_type)
-
+            
+            elif trans_type == TransformationTypes.HEX_TO_STRING.value:
+                LOGGER.info('Transformation type is %s, no need to do any validation.', trans_type)
             else:
                 raise UnsupportedTransformationTypeException(trans_type)
 
